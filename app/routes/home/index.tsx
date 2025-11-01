@@ -7,7 +7,8 @@ import FeaturedProjects from '~/components/Feature-projects';
 import AboutPreview from '~/components/About-preview';
 import type { PostMeta } from '~/types';
 import LatestPosts from '~/components/LatestPosts';
-import type { StrapiResponse, StrapiProject } from '~/types';
+import type { StrapiResponse, StrapiProject, StrapiPost } from '~/types';
+import { body } from 'framer-motion/client';
 
 // export function meta({}: Route.MetaArgs) {
 //   return [
@@ -34,14 +35,16 @@ export async function loader({
 }: Route.LoaderArgs): Promise<{ projects: Project[]; posts: PostMeta[] }> {
   // const res = await fetch('http://localhost:8000/projects');
   // const data = await res.json();
-
-  const url = new URL(request.url);
+  // const url = new URL(request.url);
 
   const [projectRes, postRes] = await Promise.all([
     fetch(
       `${import.meta.env.VITE_API_URL}/api/projects?filters[featured][$eq]=true&populate=*`
     ),
-    fetch(new URL('/posts-meta.json', url).href),
+    // fetch(new URL('/posts-meta.json', url).href),
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/posts?sort[0]=date:desc&pagination[limit]=3&populate=image`
+    ),
   ]);
 
   if (!projectRes.ok || !postRes.ok) {
@@ -54,7 +57,7 @@ export async function loader({
   // ]);
 
   const projectJson: StrapiResponse<StrapiProject> = await projectRes.json();
-  const postJson: PostMeta[] = await postRes.json();
+  const postJson: StrapiResponse<StrapiPost> = await postRes.json();
 
   const projects: Project[] = projectJson.data.map((item) => ({
     id: item.id,
@@ -70,7 +73,19 @@ export async function loader({
     featured: item.featured,
   }));
 
-  return { projects, posts: postJson };
+  const posts = postJson.data.map((item) => ({
+    id: item.id,
+    slug: item.slug,
+    title: item.title,
+    excerpt: item.excerpt,
+    body: item.body,
+    date: item.date,
+    image: item.image?.url
+      ? `${import.meta.env.VITE_API_URL}${item.image.url}`
+      : '/images/no-image.png',
+  }));
+
+  return { projects, posts };
 }
 
 const HomePage = ({ loaderData }: Route.ComponentProps) => {
