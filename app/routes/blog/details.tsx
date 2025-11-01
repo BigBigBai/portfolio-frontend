@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import type { Route } from './+types/details';
-import type { PostMeta } from '~/types';
+import type { Post } from '~/types';
 import { Link } from 'react-router';
 import type { StrapiResponse, StrapiPost } from '~/types';
 
@@ -29,16 +29,18 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 
   const item = json.data[0];
 
-  const post: PostMeta = {
+  const post: Post = {
     id: item.id,
     slug: item.slug,
     title: item.title,
     excerpt: item.excerpt,
+    body: item.body,
     date: item.date,
     image: item.image?.url
       ? `${import.meta.env.VITE_API_URL}${item.image.url}`
       : '/images/no-image.png',
   };
+  // console.log(post);
 
   return { post };
 
@@ -79,8 +81,8 @@ const BlogPostDetailsPage = ({ loaderData }: Route.ComponentProps) => {
       />
 
       <div className='prose prose-invert max-w-none mb-12'>
-        {/* <ReactMarkdown>{markdown}</ReactMarkdown> */}
-        The Body
+        <ReactMarkdown>{post.body}</ReactMarkdown>
+        {/* The Body */}
       </div>
 
       <div className='text-center'>

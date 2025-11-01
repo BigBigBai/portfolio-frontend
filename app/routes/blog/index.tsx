@@ -1,5 +1,5 @@
 import type { Route } from './+types/index';
-import type { PostMeta } from '~/types';
+import type { Post } from '~/types';
 import { Link } from 'react-router';
 import PostCard from '~/components/PostCard';
 import Pagination from '~/components/Pagination';
@@ -9,7 +9,7 @@ import type { StrapiResponse, StrapiPost } from '~/types';
 
 export async function loader({
   request,
-}: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
+}: Route.LoaderArgs): Promise<{ posts: Post[] }> {
   // const url = new URL('/posts-meta.json', request.url);
   // const res = await fetch(url.href);
 
@@ -41,7 +41,7 @@ export async function loader({
 }
 
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
-  const { posts } = loaderData as { posts: PostMeta[] };
+  const { posts } = loaderData as { posts: Post[] };
 
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 3;

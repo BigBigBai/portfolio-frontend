@@ -5,7 +5,7 @@ import type { Route } from './+types/index';
 import type { Project } from '~/types';
 import FeaturedProjects from '~/components/Feature-projects';
 import AboutPreview from '~/components/About-preview';
-import type { PostMeta } from '~/types';
+import type { Post } from '~/types';
 import LatestPosts from '~/components/LatestPosts';
 import type { StrapiResponse, StrapiProject, StrapiPost } from '~/types';
 import { body } from 'framer-motion/client';
@@ -32,7 +32,7 @@ import { body } from 'framer-motion/client';
 
 export async function loader({
   request,
-}: Route.LoaderArgs): Promise<{ projects: Project[]; posts: PostMeta[] }> {
+}: Route.LoaderArgs): Promise<{ projects: Project[]; posts: Post[] }> {
   // const res = await fetch('http://localhost:8000/projects');
   // const data = await res.json();
   // const url = new URL(request.url);
