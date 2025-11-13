@@ -65,7 +65,7 @@ export async function loader({
     title: item.title,
     description: item.description,
     image: item.image?.url
-      ? `${import.meta.env.VITE_API_URL}${item.image.url}`
+      ? `${item.image.url}`
       : '/images/no-image.png',
     url: item.url,
     date: item.date,
@@ -81,7 +81,7 @@ export async function loader({
     body: item.body,
     date: item.date,
     image: item.image?.url
-      ? `${import.meta.env.VITE_API_URL}${item.image.url}`
+      ? `${item.image.url}`
       : '/images/no-image.png',
   }));
 
