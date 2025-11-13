@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 
+// 404 Not Found Page Component
 const NotFoundPage = () => {
   return (
     <section className='flex flex-col items-center justify-center min-h-[70vh] text-center px-6'>
