@@ -36,9 +36,7 @@ export async function loader({ request, params }: Route.LoaderArgs) {
     excerpt: item.excerpt,
     body: item.body,
     date: item.date,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
+    image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
   };
   // console.log(post);
 
@@ -68,19 +66,19 @@ const BlogPostDetailsPage = ({ loaderData }: Route.ComponentProps) => {
   //   console.log(postMeta, markdown);
 
   return (
-    <div className='max-w-3xl mx-auto px-6 py-12 bg-gray-900'>
-      <h1 className='text-3xl font-bold text-blue-400 mb-2'>{post.title}</h1>
-      <p className='text-sm text-gray-400 mb-6'>
+    <div className='max-w-3xl mx-auto px-6 py-12 bg-white'>
+      <h1 className='text-3xl font-bold text-blue-600 mb-2'>{post.title}</h1>
+      <p className='text-sm text-gray-500 mb-6'>
         {new Date(post.date).toLocaleDateString()}
       </p>
 
       <img
         src={post.image}
         alt={post.title}
-        className='w-full h-64 object-cover mb-4'
+        className='w-full h-64 object-cover mb-4 rounded-lg'
       />
 
-      <div className='prose prose-invert max-w-none mb-12'>
+      <div className='prose prose-gray max-w-none mb-12'>
         <ReactMarkdown>{post.body}</ReactMarkdown>
         {/* The Body */}
       </div>

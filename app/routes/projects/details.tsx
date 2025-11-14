@@ -32,9 +32,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     documentId: item.documentId,
     title: item.title,
     description: item.description,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
+    image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
     url: item.url,
     date: item.date,
     category: item.category,
@@ -58,7 +56,7 @@ const ProjectDetailPage = ({ loaderData }: Route.ComponentProps) => {
       {/* Go Back Button */}
       <Link
         to='/projects'
-        className='flex items-center text-blue-400 hover:text-blue-500 mb-6 transition'
+        className='flex items-center text-blue-600 hover:text-blue-700 mb-6 transition font-medium'
       >
         <FaArrowLeft className='mr-2' />
         Back to Projects
@@ -76,13 +74,13 @@ const ProjectDetailPage = ({ loaderData }: Route.ComponentProps) => {
 
         {/* Project Info */}
         <div>
-          <h1 className='text-3xl font-bold text-blue-400 mb-4'>
+          <h1 className='text-3xl font-bold text-blue-600 mb-4'>
             {project.title}
           </h1>
-          <p className='text-gray-300 text-sm mb-4'>
+          <p className='text-gray-600 text-sm mb-4'>
             {new Date(project.date).toLocaleDateString()} • {project.category}
           </p>
-          <p className='text-gray-200 mb-6'>{project.description}</p>
+          <p className='text-gray-700 mb-6'>{project.description}</p>
 
           <a
             href={project.url}

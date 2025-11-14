@@ -30,9 +30,7 @@ export async function loader({
     excerpt: item.excerpt,
     date: item.date,
     body: item.body,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
+    image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
   }));
 
   // posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -62,8 +60,8 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const currentPosts = filteredPosts.slice(indexOfFirst, indexOfLast);
 
   return (
-    <section className='max-w-3xl mx-auto mt-10 px-6 py-6 bg-gray-900'>
-      <h2 className='text-3xl font-bold mb-8 text-white'>📝 Blog</h2>
+    <section className='max-w-3xl mx-auto mt-10 px-6 py-6 bg-white'>
+      <h2 className='text-3xl font-bold mb-8 text-gray-900'>📝 Blog</h2>
 
       <PostFilter
         searchQuery={searchQuery}
@@ -79,7 +77,7 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
 
       <div className='space-y-8'>
         {currentPosts.length === 0 ? (
-          <p className='text-gray-400 text-center'>No posts found.</p>
+          <p className='text-gray-500 text-center'>No posts found.</p>
         ) : (
           currentPosts.map((post) => <PostCard key={post.slug} post={post} />)
         )}

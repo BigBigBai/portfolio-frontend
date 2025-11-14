@@ -14,7 +14,7 @@ const FeatureProjects = ({
 
   return (
     <section>
-      <h2 className='text-2xl font-bold mb-6 text-gray-800 dark:text-white'>
+      <h2 className='text-2xl font-bold mb-6 text-gray-900'>
         🌟 Featured Projects
       </h2>
       <div className='grid gap-6 sm:grid-cols-2'>

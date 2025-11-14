@@ -26,9 +26,7 @@ export async function loader({
     documentId: item.documentId,
     title: item.title,
     description: item.description,
-    image: item.image?.url
-      ? `${item.image.url}`
-      : '/images/no-image.png',
+    image: item.image?.url ? `${item.image.url}` : '/images/no-image.png',
     url: item.url,
     date: item.date,
     category: item.category,
@@ -79,7 +77,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 
   return (
     <>
-      <h2 className='text-3xl font-bold mb-8 text-white'>🚀 Projects</h2>
+      <h2 className='text-3xl font-bold mb-8 text-gray-900'>🚀 Projects</h2>
       {/* Category Filter */}
       <div className='flex flex-wrap gap-2 mb-8'>
         {categories.map((cat) => (
@@ -90,10 +88,10 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
               // Reset page number to 1 when category is changed
               setCurrentPage(1);
             }}
-            className={`px-3 py-1 rounded text-sm ${
+            className={`px-3 py-1 rounded text-sm transition ${
               selectedCategory === cat
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-700 text-gray-200'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
             {cat}
