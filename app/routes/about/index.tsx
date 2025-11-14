@@ -4,18 +4,18 @@ const AboutPage = () => {
       {/* Intro */}
       <div className='flex flex-col md:flex-row items-center md:items-start gap-10 mb-12'>
         <img
-          src='/images/profile.jpg'
+          src='/images/profile.jpeg'
           alt='Profile'
-          className='w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-md'
+          className='w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-md aspect-square'
         />
         <div>
           <h1 className='text-3xl font-bold text-white mb-2'>
-            Hey, I'm John 👋
+            Hey, I'm Yingjian Bai 👋
           </h1>
           <p className='text-gray-300 text-lg'>
-            I'm a passionate web developer and content creator who loves
-            building friendly digital experiences and helping others grow into
-            confident, modern developers.
+            I'm a full-stack engineer with strong experience in Next.js, and
+            Java microservices, focused on building high-performance and
+            scalable systems.
           </p>
         </div>
       </div>
@@ -24,11 +24,10 @@ const AboutPage = () => {
       <div className='mb-12'>
         <h2 className='text-2xl font-semibold text-white mb-4'>My Mission</h2>
         <p className='text-gray-300 leading-relaxed'>
-          After turning my life around, I made it my mission to share what I’ve
-          learned with others — not just about code, but about building a life
-          you’re proud of. Through tutorials, courses, and real-world projects,
-          I aim to make development accessible, friendly, and something you look
-          forward to each day.
+          I build clean, reliable systems—from interactive web experiences to
+          high-performance backends. Passionate about distributed systems, cloud
+          architectures, and the craft of writing thoughtful code. Constantly
+          learning. Constantly improving.
         </p>
       </div>
 
@@ -50,6 +49,9 @@ const AboutPage = () => {
             'PostgreSQL',
             'Appwrite',
             'Docker',
+            'Spring Boot',
+            'AWS',
+            'Git',
           ].map((tech) => (
             <li key={tech} className='bg-gray-700 px-3 py-1 rounded-md'>
               {tech}

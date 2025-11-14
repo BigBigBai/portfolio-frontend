@@ -4,16 +4,16 @@ const AboutPreview = () => {
   return (
     <section className='mt-12 p-10 flex flex-col md:flex-row items-center gap-8 bg-gray-900'>
       <img
-        src='/images/profile.jpg'
+        src='/images/profile.jpeg'
         alt='profile'
         className='w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-blue-500 shadow-md'
       />
       <div>
         <h2 className='text-2xl font-bold text-white mb-2'>👋 About Me</h2>
         <p className='text-gray-300 mb-4 max-w-xl'>
-          I’m John — a self-taught developer and educator passionate about
-          building friendly digital experiences and helping others grow into
-          confident modern devs.
+          I'm Yingjian - a full-stack engineer with strong experience in
+          Next.js, and Java microservices, focused on building high-performance
+          and scalable systems.
         </p>
         <Link
           to='/about'
